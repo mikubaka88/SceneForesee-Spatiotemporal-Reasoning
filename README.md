@@ -34,8 +34,6 @@ SceneForesee contains **144.57K temporal pairs**, **1.05M entity correspondences
 
 ### Method
 
-![EvoSee method overview](assets/method.png)
-
 EvoSee encodes observed entities and visual evidence, aligns future geometry with Event semantics, and selects one continuation per entity. The selected change contributes to entity refinement, retention, and scene representation.
 
 ### Qualitative Results
