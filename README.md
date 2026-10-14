@@ -19,7 +19,7 @@
 <p><sup>1</sup> Huazhong University of Science and Technology<br>
 <sup>2</sup> Shanghai Jiao Tong University</p>
 
-**Following entities through change, and using their predicted evolution to reason about scenes.**
+**Reasoning about scenes through entity continuity and predicted change.**
 
 [Overview](#overview) &nbsp; · &nbsp; [Task](#task-comparison) &nbsp; · &nbsp; [Benchmark](#benchmark) &nbsp; · &nbsp; [EvoSee](#evosee) &nbsp; · &nbsp; [Results](#results) &nbsp; · &nbsp; [Release Status](#release-status) &nbsp; · &nbsp; [Citation](#citation)
 
@@ -29,12 +29,12 @@
 
 ## Overview
 
-Dynamic video reasoning requires understanding what changes while following the same entities through time. An entity retains its identity as its location, visibility, and relations develop. A trajectory describes where it moves; an Event describes how its state or relations change. Learning these complementary views of the same continuation connects spatial prediction with scene evolution reasoning.
+Scene evolution concerns how persistent entities move and interact over time. Learning this evolution connects the geometry of entity motion with the semantics of scene change, providing observed and anticipated context for spatiotemporal reasoning.
 
 | Task | Benchmark | Method |
 | :--- | :--- | :--- |
 | **Scene Evolution Understanding (SEU)** | **SceneForesee** | **EvoSee** |
-| Predict and interpret how observed entities and their relations develop. | Evaluate entity continuity and scene evolution reasoning on paired observed and future scenes. | Learn future geometry and Event semantics together, then use predicted change for entity and scene representations. |
+| Infer entity histories and future evolution, supported by observed Visual Evidence. | Evaluate entity continuity and scene evolution reasoning in paired scenes with shared identities. | Learn geometric and semantic continuations jointly to inform entity and scene reasoning. |
 
 <details>
 <summary><strong>Read the abstract</strong></summary>
@@ -70,7 +70,7 @@ The architecture comparison illustrates general video description and EvoSee for
   <a href="assets/benchmark.png"><img src="assets/benchmark.png" width="100%" alt="SceneForesee benchmark statistics, four Event types, annotation construction, and evaluation targets"></a>
 </p>
 
-SceneForesee pairs observed and future intervals under shared entity identities. Its annotations describe trajectories, future Events, associated Visual Evidence in observation, and the evolving scene.
+SceneForesee pairs observation and future intervals under shared entity identities. Trajectories, Events, and associated Visual Evidence support complementary geometric and semantic evaluations of the same evolving scenes.
 
 | Benchmark aspect | Categories or content |
 | :--- | :--- |
@@ -83,21 +83,21 @@ The two evaluation families provide **18 metrics** for complementary geometric a
 
 ## EvoSee
 
-**Geometry and Event semantics describe the same scene continuation.** EvoSee learns them through shared future states and uses the resulting changes to enrich entity and scene representations.
+**Future geometry and Event semantics describe the same entity continuation.** EvoSee learns this relationship through shared future states, selects a continuation from observation, and uses the predicted change to refine entity states and form scene context.
 
 <p align="center">
-  <a href="assets/method.png"><img src="assets/method.png" width="100%" alt="EvoSee architecture with Entity Visual Evidence Encoding, Geometry Event Alignment Reasoning, and Evolution Conditioned Decoding"></a>
+  <a href="assets/method.png"><img src="assets/method.png?v=original-overlay" width="100%" alt="EvoSee architecture with Entity Visual Evidence Encoding, Geometry Event Alignment Reasoning, and Evolution Conditioned Decoding"></a>
 </p>
 
-Observed entity states and motion evidence condition shared predictions of future geometry and Event semantics. Selected changes inform entity refinement and retention, while all entity queries contribute to scene representation. Example responses and trajectories are schematic illustrations.
+Shared future states couple trajectory and Event predictions. Predicted changes inform entity refinement and retention, while all queries contribute to scene representation. Example responses and trajectories are schematic illustrations.
 
 | Mechanism | Scientific role |
 | :--- | :--- |
-| **Entity Visual Evidence Encoding (EVE)** | Encodes entity states and observed motion evidence through shared entity queries. |
-| **Geometry Event Alignment Reasoning (GEAR)** | Predicts future geometry and Event semantics through shared candidate states. Geometry and Event errors jointly determine candidate assignment during training; observed representations select one continuation per entity at inference. |
-| **Evolution Conditioned Decoding (ECD)** | Uses selected changes to refine entity representations and support retention, while combining observed and predicted context for scene description and reasoning. |
+| **Entity Visual Evidence Encoding (EVE)** | Uses shared entity queries to encode entity states and observed motion evidence. |
+| **Geometry Event Alignment Reasoning (GEAR)** | Couples geometry and Event semantics through shared future states. Joint assignment supervises candidate learning during training; observation determines one continuation per entity at inference. |
+| **Evolution Conditioned Decoding (ECD)** | Uses predicted change to refine entity states and guide retention. Aggregation over all queries forms scene context for description and reasoning. |
 
-SEU outputs include observed and future trajectories, future Events, associated observed evidence, and a scene description. EvoSee's scene representation also supplies context for dynamic question answering and grounding.
+EvoSee predicts entity trajectories and future Events together with associated observed evidence and a scene description. Its scene representation also provides context for dynamic question answering and grounding.
 
 ## Results
 
