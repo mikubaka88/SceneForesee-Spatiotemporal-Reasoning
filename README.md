@@ -7,6 +7,7 @@
 <p>
   <a href="https://arxiv.org/abs/2610.14439"><img src="https://img.shields.io/badge/arXiv-2610.14439-B44452?style=flat-square" alt="arXiv paper"></a>
   <a href="https://arxiv.org/pdf/2610.14439"><img src="https://img.shields.io/badge/Paper-PDF-345E91?style=flat-square" alt="Read the PDF"></a>
+  <a href="#release-status"><img src="https://img.shields.io/badge/Code-Coming%20soon-8D7852?style=flat-square" alt="Code coming soon"></a>
   <a href="#citation"><img src="https://img.shields.io/badge/Cite-BibTeX-7563A5?style=flat-square" alt="BibTeX citation"></a>
 </p>
 
@@ -20,7 +21,7 @@
 
 **Following entities through change, and using their predicted evolution to reason about scenes.**
 
-[Overview](#overview) &nbsp; · &nbsp; [Benchmark](#benchmark) &nbsp; · &nbsp; [EvoSee](#evosee) &nbsp; · &nbsp; [Results](#results) &nbsp; · &nbsp; [Citation](#citation)
+[Overview](#overview) &nbsp; · &nbsp; [Task](#task-comparison) &nbsp; · &nbsp; [Benchmark](#benchmark) &nbsp; · &nbsp; [EvoSee](#evosee) &nbsp; · &nbsp; [Results](#results) &nbsp; · &nbsp; [Release Status](#release-status) &nbsp; · &nbsp; [Citation](#citation)
 
 </div>
 
@@ -41,6 +42,14 @@ Dynamic video reasoning requires understanding what changes while following the 
 Large multimodal models (LMMs) need to understand how entities move and interact as a scene develops. This requires following the same entities over time and relating their observed motion to subsequent changes. We formulate Scene Evolution Understanding (SEU), a task for predicting and interpreting this change. Given observed video, a model estimates entity histories and predicts one scene continuation through future trajectories and Events, accompanied by Visual Evidence from observed motion and a scene description. We construct SceneForesee, a benchmark for evaluating entity continuity and scene evolution reasoning through paired observed and future scenes with shared entity identities. It contains 144.57K temporal pairs, 1.05M entity correspondences, and 272.49K Events paired with observed evidence. We propose a spatiotemporal reasoning framework, EvoSee, that learns future geometry and Event semantics through shared candidate states and joint assignment. It selects one continuation per entity from observation and uses the selected changes for entity refinement, retention, and scene representation. On SceneForesee, EvoSee outperforms Qwen3.5-9B by 10.45 points in Combined Point-F1 and 17.24 points in Event Global F1. On the 4D reasoning benchmark Dyn-Bench, it improves question answering accuracy and grounding J&F by 4.8 and 3.58 points over their respective base systems. These results support scene evolution as both a prediction target and a dynamic representation that brings predicted entity changes into spatiotemporal reasoning.
 
 </details>
+
+## Task Comparison
+
+<p align="center">
+  <a href="assets/task.png"><img src="assets/task.png" width="100%" alt="Figure 1: task comparison, architecture overview, reported radar scores, and illustrative scene evolution examples"></a>
+</p>
+
+The architecture comparison illustrates general video description and EvoSee for scene evolution reasoning. Radar charts summarize scores reported in the paper. Example responses and trajectory drawings are task illustrations, not raw model outputs.
 
 ## Benchmark
 
@@ -75,6 +84,12 @@ The two evaluation families provide **18 metrics** for complementary geometric a
 ## EvoSee
 
 **Geometry and Event semantics describe the same scene continuation.** EvoSee learns them through shared future states and uses the resulting changes to enrich entity and scene representations.
+
+<p align="center">
+  <a href="assets/method.png"><img src="assets/method.png" width="100%" alt="EvoSee architecture with Entity Visual Evidence Encoding, Geometry Event Alignment Reasoning, and Evolution Conditioned Decoding"></a>
+</p>
+
+Observed entity states and motion evidence condition shared predictions of future geometry and Event semantics. Selected changes inform entity refinement and retention, while all entity queries contribute to scene representation. Example responses and trajectories are schematic illustrations.
 
 | Mechanism | Scientific role |
 | :--- | :--- |
@@ -172,6 +187,14 @@ EvoSee's scene representation augments Qwen3.5-9B for question answering and Sa2
 | **EvoSee (Ours)** | **79.28** | **78.03** | **80.28** | **79.54** |
 
 </details>
+
+## Release Status
+
+This repository currently presents the paper, figures, and reported results.
+
+| Resource | Status |
+| :--- | :--- |
+| Code | **Coming soon** |
 
 ## Citation
 
