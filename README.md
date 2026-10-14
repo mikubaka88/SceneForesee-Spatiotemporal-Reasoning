@@ -63,7 +63,7 @@ Large multimodal models (LMMs) need to understand how entities move and interact
 
 SceneForesee pairs observed and future intervals under shared entity identities. Its annotations describe trajectories, future Events, associated Visual Evidence in observation, and the evolving scene.
 
-| Annotation | Categories or content |
+| Benchmark aspect | Categories or content |
 | :--- | :--- |
 | **Events** | Relation change, approach, occlusion, leave |
 | **Visual Evidence** | Trajectory trend, relation change |
