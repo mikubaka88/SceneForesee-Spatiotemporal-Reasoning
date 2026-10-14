@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use SceneForesee or discuss this work, please cite the paper below."
+title: "SceneForesee: Learning Scene Evolution for Spatiotemporal Reasoning"
+url: "https://github.com/mikubaka88/SceneForesee-Spatiotemporal-Reasoning"
+authors: &authors
+  - family-names: Li
+    given-names: Chaoyue
+  - family-names: Han
+    given-names: Shoudong
+  - family-names: Wu
+    given-names: Haoyang
+  - family-names: Yang
+    given-names: Boxue
+  - family-names: Chen
+    given-names: Sijia
+  - family-names: Chen
+    given-names: Yufan
+  - family-names: Zhang
+    given-names: Ruping
+preferred-citation:
+  type: article
+  title: "SceneForesee: Learning Scene Evolution for Spatiotemporal Reasoning"
+  authors: *authors
+  year: 2026
+  journal: "arXiv preprint arXiv:2610.14439"
+  url: "https://arxiv.org/abs/2610.14439"
